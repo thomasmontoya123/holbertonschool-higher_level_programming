@@ -8,12 +8,12 @@
 
 int is_palindrome(listint_t **head)
 {
-	int buff[100], i, j, size;
+	int buff[10000], i, j, size;
 	listint_t *temporal;
 
 	temporal = *head;
 
-	if (!head || !*head || !(*head)->next)
+	if (!head || !(*head) || !(*head)->next)
 		return (1);
 
 	for (i = 0; temporal; i++, size++)
