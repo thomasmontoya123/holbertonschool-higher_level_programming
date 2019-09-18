@@ -14,6 +14,7 @@ int is_palindrome(listint_t **head)
 	temporal = *head;
 
 	j = 0;
+	size = 0;
 
 	if (!head || !(*head) || !(*head)->next)
 		return (1);
