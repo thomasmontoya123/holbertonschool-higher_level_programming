@@ -2,6 +2,10 @@ import math
 
 
 class MagicClass:
+    '''
+    Class definition: MagicClass
+    '''
+
     def __init__(self, radius=0):
         self.radius = 0
         if (type(radius) is not int and type(radius) is not float):
