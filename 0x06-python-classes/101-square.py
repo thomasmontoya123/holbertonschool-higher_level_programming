@@ -99,6 +99,6 @@ class Square():
         if self.__size <= 0:
             return ""
         else:
-            return (self.__position[1] * "\n" + (self.__size - 1)
-                    * (self.__position[0] * " " + self.__size * "#" + "\n")
-                    + self.__position[0] * " " + self.__size * "#")
+            return (self.__position[1] * "\n" + (self.__size - 1) *
+                    (self.__position[0] * " " + self.__size * "#" + "\n") +
+                    self.__position[0] * " " + self.__size * "#")
