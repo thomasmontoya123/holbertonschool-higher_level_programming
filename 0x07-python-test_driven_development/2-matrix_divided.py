@@ -37,8 +37,8 @@ def matrix_divided(matrix, div):
         """
 
     if isinstance(matrix, list) is False or matrix == []:
-        raise TypeError("matrix must be a matrix (list of lists)\
-                        of integers/floats")
+        raise TypeError('matrix must be a ' +
+                        'matrix (list of lists) of integers/floats')
 
     elif isinstance(div, (int, float)) is False:
         raise TypeError("div must be a number")
@@ -51,11 +51,11 @@ def matrix_divided(matrix, div):
     for row in matrix:
         for value in row:
             if isinstance(value, (int, float)) is False:
-                raise TypeError("matrix must be a matrix (list of lists)\
-                            of integers/floats")
+                raise TypeError('matrix must be a ' +
+                                'matrix (list of lists) of integers/floats')
 
             if len(row) != row_size:
-                raise TypeError("Each row of the matrix must\
-                            have the same size")
+                raise TypeError("Each row of the matrix must " +
+                                "have the same size")
 
     return [list(map(lambda x: round(x / div, 2), row))for row in matrix]

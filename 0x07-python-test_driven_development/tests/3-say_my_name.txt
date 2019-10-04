@@ -3,9 +3,9 @@ __________________________
 
 Documentation checker:
 
-    >>> print(len(__import__("3-say_my_name").__doc__) > 5)
+    >>> len(__import__("3-say_my_name").__doc__) > 5
     True
-    >>> print(len(__import__("3-say_my_name").say_my_name.__doc__) > 5)
+    >>> len(__import__("3-say_my_name").say_my_name.__doc__) > 5
     True
 
 
