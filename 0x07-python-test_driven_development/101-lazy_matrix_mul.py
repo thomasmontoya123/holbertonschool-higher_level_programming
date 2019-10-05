@@ -18,6 +18,6 @@ def lazy_matrix_mul(m_a, m_b):
 
         """
     try:
-        return [numpy.matmul(m_a, m_b)]
+        return numpy.matmul(m_a, m_b)
     except:
         raise

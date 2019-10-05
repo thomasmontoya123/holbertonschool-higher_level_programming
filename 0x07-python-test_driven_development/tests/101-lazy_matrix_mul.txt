@@ -15,8 +15,8 @@ __________________________
     >>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
 
     >>> lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
-    [array([[ 7, 10],
-           [15, 22]])]
+    array([[ 7, 10],
+           [15, 22]])
 
 
 Edge cases checker:
