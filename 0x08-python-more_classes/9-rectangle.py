@@ -74,7 +74,7 @@ class Rectangle:
 
     def __del__(self):
         '''Detect instance deletion'''
-        type(self).number_of_instances -= 1
+        Rectangle.number_of_instances -= 1
         print ("Bye rectangle...")
 
     @staticmethod
