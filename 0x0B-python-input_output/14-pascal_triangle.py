@@ -21,9 +21,10 @@ def pascal_triangle(n):
         result.append(row)
     return result
 
+
 def combination(n, k):
     '''
-    recursion method 
+    recursion method
     '''
     if k == 0 or k == n:
         return str(1)
