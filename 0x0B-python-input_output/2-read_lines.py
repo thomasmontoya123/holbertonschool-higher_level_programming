@@ -12,10 +12,10 @@ def read_lines(filename="", nb_lines=0):
         filename: String with the nema of the file
         nb_lines: number of lines to be read
     '''
-    with open(filename) as f:
+    with open(filename, encoding='utf-8') as f:
         if nb_lines <= 0:
             read_data = f.read()
-            print(read_data)
+            print(read_data, end="")
         else:
             line_count = 0
             for line in f:
