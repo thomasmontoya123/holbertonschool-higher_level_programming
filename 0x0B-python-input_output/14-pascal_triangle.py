@@ -14,19 +14,12 @@ def pascal_triangle(n):
     if n <= 0:
         return result
 
-    for i in range(n):
-        row = []
-        for value in range(i + 1):
-            row.append(combination(i, value))
+    result = [[1]]
+    for i in range(1, n):
+        row = [1]
+        for j in range(1, i):
+            elem = result[i-1][j-1] + result[i-1][j]
+            row.append(elem)
+        row.append(1)
         result.append(row)
     return result
-
-
-def combination(n, k):
-    '''
-    recursion method
-    '''
-    if k == 0 or k == n:
-        return str(1)
-    else:
-        return str(int(combination(n - 1, k - 1)) + int(combination(n - 1, k)))
