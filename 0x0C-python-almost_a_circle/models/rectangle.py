@@ -118,7 +118,8 @@ class Rectangle(Base):
         '''
         print special method
         '''
-        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y, self.width, self.height)
+        return ("[Rectangle] ({}) {}/{} - {}/{}".format
+                (self.id, self.x, self.y, self.width, self.height))
 
     def update(self, *args, **kwargs):
         '''
@@ -141,6 +142,6 @@ class Rectangle(Base):
         '''
         Returns the dictionary representation of a Rectangle
         '''
-        keys  = ["id", "width", "height", "x", "y"]
+        keys = ["id", "width", "height", "x", "y"]
         values = [self.id,  self.width, self.height, self.x, self.y]
         return dict(zip(keys, values))

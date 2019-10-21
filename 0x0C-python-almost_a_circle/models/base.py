@@ -3,6 +3,7 @@
 Base class modue
 '''
 import json
+from turtle import *
 
 
 class Base:
@@ -38,13 +39,14 @@ class Base:
         json_list = []
         for instance in list_objs:
             json_list.append(instance.to_dictionary())
-    
-        with open("{}.json".format(str(cls.__name__)), 'w', encoding='utf-8') as f:
-                if list_objs is None:
-                    f.write("[]")
-                else:
-                    new_json = cls.to_json_string(json_list)
-                    f.write(new_json)
+
+        filename = cls.__name__ + ".json"
+        with open(filename, 'w', encoding='utf-8') as f:
+            if list_objs is None:
+                f.write("[]")
+            else:
+                new_json = cls.to_json_string(json_list)
+                f.write(new_json)
 
     @staticmethod
     def from_json_string(json_string):
@@ -62,9 +64,12 @@ class Base:
         returns an instance with all attributes already set:
 
         **dictionary can be thought of as a double pointer to a dictionary
-        To use the update method to assign all attributes, you must create a “dummy” instance before:
-        Create a Rectangle or Square instance with “dummy” mandatory attributes (width, height, size, etc.)
-        Call update instance method to this “dummy” instance to apply your real values
+        To use the update method to assign all attributes, you must create
+        a “dummy” instance before:
+        Create a Rectangle or Square instance with “dummy” mandatory attributes
+        (width, height, size, etc.)
+        Call update instance method to this “dummy” instance to apply your real
+        values
 
         '''
         dummy = cls(1, 1)
@@ -85,5 +90,54 @@ class Base:
                     new = cls.create(**instance)
                     instance_list.append(new)
                 return instance_list
-        except :
+        except:
             return instance_list
+
+    def draw(list_rectangles, list_squares):
+        '''
+        Opens a window and draws all the Rectangles and Squares
+        '''
+        colors = ['red', 'purple', 'blue', 'green', 'yellow', 'orange']
+        i = 0
+        for rec in list_rectangles:
+            setpos(rec.x, rec.y)
+            width(4)
+            fillcolor(colors[i])
+            pencolor(colors[i])
+            begin_fill()
+            forward(rec.width)
+            left(90)
+            forward(rec.height)
+            left(90)
+            forward(rec.width)
+            left(90)
+            forward(rec.height)
+            left(90)
+            end_fill()
+            width(0)
+            i += 1
+            if i >= len(colors):
+                i = 0
+
+        setpos(0, 0)
+        for sqr in list_squares:
+            pencolor(colors[i])
+            setpos(sqr.x, sqr.y)
+            width(7)
+            fillcolor(colors[i])
+            begin_fill()
+            forward(sqr.width)
+            left(90)
+            forward(sqr.width)
+            left(90)
+            forward(sqr.width)
+            left(90)
+            forward(sqr.width)
+            left(90)
+            end_fill()
+            width(0)
+            i += 1
+            if i >= len(colors):
+                i = 0
+
+        input()
