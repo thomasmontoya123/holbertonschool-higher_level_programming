@@ -43,7 +43,7 @@ class Base:
         filename = cls.__name__ + ".json"
         with open(filename, 'w', encoding='utf-8') as f:
             if list_objs is None:
-                f.write("[]")
+                f.write(json_list)
             else:
                 new_json = cls.to_json_string(json_list)
                 f.write(new_json)
