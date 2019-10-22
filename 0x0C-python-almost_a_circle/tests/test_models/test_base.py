@@ -6,8 +6,8 @@ Unittest for Base class
 import unittest
 from models.base import Base
 
-class TestBase(unittest.TestCase):
 
+class TestBase(unittest.TestCase):
     def test_class(self):
         b0 = Base()
         self.assertTrue(isinstance(b0, Base))
@@ -34,7 +34,6 @@ class TestBase(unittest.TestCase):
         b5 = Base()
         self.assertEqual(b5.id, 5)
         Base._Base__nb_objects = 0
-
 
     def test_manual(self):
         b1 = Base(45)

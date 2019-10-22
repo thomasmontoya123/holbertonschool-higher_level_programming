@@ -33,17 +33,8 @@ class TestRectangle(unittest.TestCase):
 
     def test_rectangle_arg(self):
         self.assertRaises(TypeError, Rectangle)
-        # self.assertRaisesRegex(TypeError,
-        #                      "__init__() missing 2 required positional arguments: 'width' and 'height'",
-        #                     Rectangle)
         self.assertRaises(TypeError, Rectangle, 1)
-        # self.assertRaisesRegex(TypeError,
-        #                      "__init__() missing 1 required positional argument: 'height'",
-        #                     Rectangle, 1)
         self.assertRaises(TypeError, Rectangle, 1, 1, 1, 1, 1, 1)
-        # self.assertRaisesRegex(TypeError,
-        #                      "__init__() takes from 3 to 6 positional arguments but 7 were given",
-        #                     Rectangle, 1, 1, 1, 1, 1)
         Base._Base__nb_objects = 0
 
     def test_id(self):
@@ -63,12 +54,14 @@ class TestRectangle(unittest.TestCase):
 
     def test_width_string(self):
         self.assertRaises(TypeError, Rectangle, "string", 1)
-        self.assertRaisesRegex(TypeError, "width must be an integer", Rectangle, "string", 1)
+        self.assertRaisesRegex(TypeError, "width must be an integer",
+                               Rectangle, "string", 1)
         Base._Base__nb_objects = 0
 
     def test_width_neg(self):
         self.assertRaises(ValueError, Rectangle, -1, 1)
-        self.assertRaisesRegex(ValueError, "width must be > 0", Rectangle, -1, 1)
+        self.assertRaisesRegex(ValueError, "width must be > 0",
+                               Rectangle, -1, 1)
         Base._Base__nb_objects = 0
 
     def test_height(self):
@@ -83,12 +76,14 @@ class TestRectangle(unittest.TestCase):
 
     def test_height_string(self):
         self.assertRaises(TypeError, Rectangle, 1, "string")
-        self.assertRaisesRegex(TypeError, "height must be an integer", Rectangle, 1, "string")
+        self.assertRaisesRegex(TypeError, "height must be an integer",
+                               Rectangle, 1, "string")
         Base._Base__nb_objects = 0
 
     def test_height_neg(self):
         self.assertRaises(ValueError, Rectangle, 1, -1)
-        self.assertRaisesRegex(ValueError, "height must be > 0", Rectangle, 1, -1)
+        self.assertRaisesRegex(ValueError, "height must be > 0",
+                               Rectangle, 1, -1)
         Base._Base__nb_objects = 0
 
     def test_x(self):
@@ -103,12 +98,14 @@ class TestRectangle(unittest.TestCase):
 
     def test_x_string(self):
         self.assertRaises(TypeError, Rectangle, 1, 1, "string")
-        self.assertRaisesRegex(TypeError, "x must be an integer", Rectangle, 1, 1, "string")
+        self.assertRaisesRegex(TypeError, "x must be an integer",
+                               Rectangle, 1, 1, "string")
         Base._Base__nb_objects = 0
 
     def test_x_neg(self):
         self.assertRaises(ValueError, Rectangle, 1, 1, -1)
-        self.assertRaisesRegex(ValueError, "x must be >= 0", Rectangle, 1, 1, -1)
+        self.assertRaisesRegex(ValueError, "x must be >= 0",
+                               Rectangle, 1, 1, -1)
         Base._Base__nb_objects = 0
 
     def test_y(self):
@@ -123,12 +120,14 @@ class TestRectangle(unittest.TestCase):
 
     def test_y_string(self):
         self.assertRaises(TypeError, Rectangle, 1, 1, 1, "string")
-        self.assertRaisesRegex(TypeError, "y must be an integer", Rectangle, 1, 1, 1, "string")
+        self.assertRaisesRegex(TypeError, "y must be an integer",
+                               Rectangle, 1, 1, 1, "string")
         Base._Base__nb_objects = 0
 
     def test_y_neg(self):
         self.assertRaises(ValueError, Rectangle, 1, 1, 1, -1)
-        self.assertRaisesRegex(ValueError, "y must be >= 0", Rectangle, 1, 1, 1, -1)
+        self.assertRaisesRegex(ValueError, "y must be >= 0",
+                               Rectangle, 1, 1, 1, -1)
         Base._Base__nb_objects = 0
 
     def test_automatic(self):
@@ -228,9 +227,6 @@ class TestRectangle(unittest.TestCase):
     def test_display_arg(self):
         r1 = Rectangle(1, 1, 1, 1)
         self.assertRaises(TypeError, r1.display, 1)
-        # self.assertRaisesRegex(TypeError,
-        #                      'display() takes 1 positional argument but 2 were given',
-        #                     r1.display, 1)
         Base._Base__nb_objects = 0
 
     def test_str(self):
@@ -595,18 +591,6 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(obj.height, 300)
         self.assertEqual(obj.x, 400)
         self.assertEqual(obj.y, 0)
-        obj.update(10, 20, 30, 40, 50)
-        self.assertEqual(obj.id, 10)
-        self.assertEqual(obj.width, 20)
-        self.assertEqual(obj.height, 30)
-        self.assertEqual(obj.x, 40)
-        self.assertEqual(obj.y, 50)
-        obj.update(1, 2, 3, 4, 5, 6, 7, 8, 9)
-        self.assertEqual(obj.id, 1)
-        self.assertEqual(obj.width, 2)
-        self.assertEqual(obj.height, 3)
-        self.assertEqual(obj.x, 4)
-        self.assertEqual(obj.y, 5)
 
     def test_rectangle_update_args_type_validation(self):
         obj = Rectangle(1, 1)

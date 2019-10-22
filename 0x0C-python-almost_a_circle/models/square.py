@@ -44,7 +44,7 @@ class Square(Rectangle):
         '''
         args_len = len(args)
         parameters = ["id", "size", "x", "y"]
-        for i in range(args_len):
+        for i in range(min(args_len, len(parameters))):
             if i > len(parameters):
                 break
             else:

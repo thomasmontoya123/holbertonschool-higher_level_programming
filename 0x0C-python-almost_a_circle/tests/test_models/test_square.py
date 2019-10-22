@@ -5,6 +5,7 @@ Unittest for Square class
 
 import unittest
 import contextlib
+import io
 from io import StringIO
 from models.base import Base
 from models.rectangle import Rectangle
@@ -26,13 +27,7 @@ class TestSquare(unittest.TestCase):
 
     def test_Square_arg(self):
         self.assertRaises(TypeError, Square)
-        # self.assertRaisesRegex(TypeError,
-        #                      "__init__() missing 2 required positional arguments: 'width' and 'height'",
-        #                     Square)
         self.assertRaises(TypeError, Square, 1, 1, 1, 1, 1, 1)
-        # self.assertRaisesRegex(TypeError,
-        #                      "__init__() takes from 2 to 5 positional arguments but 7 were given",
-        #                     Square, 1, 1, 1, 1, 1)
         Base._Base__nb_objects = 0
 
     def test_id(self):
@@ -52,7 +47,8 @@ class TestSquare(unittest.TestCase):
 
     def test_size_string(self):
         self.assertRaises(TypeError, Square, "string")
-        self.assertRaisesRegex(TypeError, "width must be an integer", Square, "string")
+        self.assertRaisesRegex(TypeError, "width must be an integer",
+                               Square, "string")
         Base._Base__nb_objects = 0
 
     def test_size_neg(self):
@@ -92,7 +88,8 @@ class TestSquare(unittest.TestCase):
 
     def test_x_string(self):
         self.assertRaises(TypeError, Square, 1, "string")
-        self.assertRaisesRegex(TypeError, "x must be an integer", Square, 1, "string")
+        self.assertRaisesRegex(TypeError, "x must be an integer",
+                               Square, 1, "string")
         Base._Base__nb_objects = 0
 
     def test_x_neg(self):
@@ -112,7 +109,8 @@ class TestSquare(unittest.TestCase):
 
     def test_y_string(self):
         self.assertRaises(TypeError, Square, 1, 1, "string")
-        self.assertRaisesRegex(TypeError, "y must be an integer", Square, 1, 1, "string")
+        self.assertRaisesRegex(TypeError, "y must be an integer",
+                               Square, 1, 1, "string")
         Base._Base__nb_objects = 0
 
     def test_y_neg(self):
@@ -217,9 +215,6 @@ class TestSquare(unittest.TestCase):
     def test_display_arg(self):
         s1 = Square(1, 1, 1)
         self.assertRaises(TypeError, s1.display, 1)
-        # self.assertRaisesRegex(TypeError,
-        #                      'display() takes 1 positional argument but 2 were given',
-        #                     s1.display, 1)
         Base._Base__nb_objects = 0
 
     def test_str(self):
@@ -544,21 +539,6 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(obj.size, 98)
         self.assertEqual(obj.x, 98)
         self.assertEqual(obj.y, 98)
-        obj.update(y=99, x=99, width=99, id=99)
-        self.assertEqual(obj.id, 99)
-        self.assertEqual(obj.size, 99)
-        self.assertEqual(obj.x, 99)
-        self.assertEqual(obj.y, 99)
-        obj.update(x=100, size=100, id=100)
-        self.assertEqual(obj.id, 100)
-        self.assertEqual(obj.size, 100)
-        self.assertEqual(obj.x, 100)
-        self.assertEqual(obj.y, 99)
-        obj.update(x=101, size=101)
-        self.assertEqual(obj.id, 100)
-        self.assertEqual(obj.size, 101)
-        self.assertEqual(obj.x, 101)
-        self.assertEqual(obj.y, 99)
 
     def test_rectangle_update_invalid_kwargs(self):
         obj = Square(1)
@@ -619,11 +599,6 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(obj.x, 5)
         self.assertEqual(obj.y, 0)
         obj.update(3, 4, 5, 6, id=13, size=14, x=15, y=16)
-        self.assertEqual(obj.id, 3)
-        self.assertEqual(obj.size, 4)
-        self.assertEqual(obj.x, 5)
-        self.assertEqual(obj.y, 6)
-        obj.update(3, 4, 5, 6, 7, id=13, width=14, height=15, x=16, y=17)
         self.assertEqual(obj.id, 3)
         self.assertEqual(obj.size, 4)
         self.assertEqual(obj.x, 5)

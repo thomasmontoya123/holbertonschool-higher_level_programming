@@ -104,6 +104,7 @@ class Base:
         i = 0
         for rec in list_rectangles:
             setpos(rec.x, rec.y)
+            down()
             width(4)
             fillcolor(colors[i])
             pencolor(colors[i])
@@ -117,7 +118,7 @@ class Base:
             forward(rec.height)
             left(90)
             end_fill()
-            width(0)
+            up()
             i += 1
             if i >= len(colors):
                 i = 0
@@ -126,6 +127,7 @@ class Base:
         for sqr in list_squares:
             pencolor(colors[i])
             setpos(sqr.x, sqr.y)
+            down()
             width(7)
             fillcolor(colors[i])
             begin_fill()
@@ -138,7 +140,7 @@ class Base:
             forward(sqr.width)
             left(90)
             end_fill()
-            width(0)
+            up()
             i += 1
             if i >= len(colors):
                 i = 0
