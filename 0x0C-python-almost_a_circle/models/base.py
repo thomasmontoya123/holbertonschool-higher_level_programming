@@ -4,6 +4,7 @@ Base class modue
 '''
 import json
 from turtle import *
+import csv
 
 
 class Base:
@@ -146,3 +147,42 @@ class Base:
                 i = 0
 
         input()
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        '''
+        save to a csv file format
+        '''
+        filename = "{}.csv".format(cls.__name__)
+        with open(filename, 'w') as f:
+            counter = 0
+            if cls.__name__ == 'Rectangle':
+                fieldnames = ['width', 'height', 'x', 'y', 'id']
+                keys = {'width': 'width', 'height': 'height', 'x': 'x',
+                        'y': 'y', 'id': 'id'}
+            else:
+                fieldnames = ['size', 'x', 'y', 'id']
+                keys = {'size': 'size', 'x': 'x', 'y': 'y', 'id': 'id'}
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            for element in list_objs:
+                if counter == 0:
+                    writer.writerow(keys)
+                    counter += 1
+                writer.writerow(element.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        '''
+        load from csv
+        '''
+        filename = "{}.csv".format(cls.__name__)
+        with open(filename, 'r') as f:
+            instance_dict = {}
+            insttance_list = []
+            reader = csv.DictReader(f)
+            for element in reader:
+                for key, value in element.items():
+                    instance_dict[key] = int(value)
+                instance = cls.create(**instance_dict)
+                insttance_list.append(instance)
+            return insttance_list
