@@ -21,7 +21,7 @@ if __name__ == '__main__':
         if position != 0:
             print(', ', end='')
         print(row[0], end='')
-    print
+    print('')
 
     cur.close()
     db.close()
