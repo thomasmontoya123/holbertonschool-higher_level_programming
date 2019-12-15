@@ -15,7 +15,7 @@ if __name__ == "__main__":
     new_session = session()
 
     result = new_session.query(State).\
-        filter(State.name.ilike('%a%')).order_by(State.id)
+        filter(State.name.like('%a%')).order_by(State.id)
 
     if result is None:
         print("Nothing")
