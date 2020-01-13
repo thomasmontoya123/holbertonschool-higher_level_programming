@@ -8,8 +8,8 @@ if __name__ == "__main__":
     if len(argv) == 2:
         values = {'q': argv[1]}
         result = requests.post(url, data=values)
-        json = result.json()
         try:
+            json = result.json()
             if json:
                 print("[{}] {}".format(json.get("id"), json.get("name")))
             else:
