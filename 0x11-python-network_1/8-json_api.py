@@ -7,12 +7,14 @@ if __name__ == "__main__":
     url = 'http://0.0.0.0:5000/search_user'
 
     if len(argv) > 1:
-        values = {'letter': argv[1]}
+        values = {'q': argv[1]}
         result = requests.post(url, data=values)
         json = result.json()
         try:
-            if json is not None:
+            if json:
                 print("[{}] {}".format(json.get("id"), json.get("name")))
+            else:
+                print("No result")
         except Exception:
             print("Not a valid JSON")
     else:
