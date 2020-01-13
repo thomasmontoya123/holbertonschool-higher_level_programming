@@ -1,0 +1,19 @@
+#!/usr/bin/python3
+'''sends a POST request with the letter as a parameter.'''
+if __name__ == "__main__":
+    import requests
+    from sys import argv
+
+    url = 'http://0.0.0.0:5000/search_user'
+
+    if len(argv) > 1:
+        values = {'letter': argv[1]}
+        result = requests.post(url, data=values)
+        json = result.json()
+        try:
+            if json is not None:
+                print("[{}] {}".format(json.get("id"), json.get("name")))
+        except Exception:
+            print("Not a valid JSON")
+    else:
+        print("No result")
