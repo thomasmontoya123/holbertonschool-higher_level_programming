@@ -1,6 +1,6 @@
 #!/usr/bin/node
 const request = require('request');
-const moviesList = [];
+let counter = 0;
 
 request(process.argv[2], function (error, response, body) {
   if (error) {
@@ -11,12 +11,12 @@ request(process.argv[2], function (error, response, body) {
     let character;
     for (movie of results) {
       for (character of movie.characters) {
-        if (character === 'https://swapi.co/api/people/18/') {
-          moviesList.push(movie.title);
+        if (character.includes('18')) {
+          counter++;
         }
       }
     }
   }
-  console.log(moviesList.length);
+  console.log(counter);
 }
 );
